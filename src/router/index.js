@@ -32,6 +32,11 @@ import nestedRouter from './modules/nested'
 **/
 export const constantRouterMap = [
   {
+    path: '/signup',
+    component: () => import('@/views/login/signup'),
+    hidden: true
+  },
+  {
     path: '/redirect',
     component: Layout,
     hidden: true,
@@ -47,6 +52,7 @@ export const constantRouterMap = [
     component: () => import('@/views/login/index'),
     hidden: true
   },
+
   {
     path: '/auth-redirect',
     component: () => import('@/views/login/authredirect'),

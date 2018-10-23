@@ -27,3 +27,15 @@ export function getUserInfo(token) {
   })
 }
 
+export function loginSignup(username, password) {
+  console.log('走到了这')
+  const data = {
+    username,
+    password
+  }
+  return request({
+    url: 'http://localhost:3009/user/signup',
+    method: 'post',
+    data
+  })
+}
