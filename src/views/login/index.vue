@@ -72,13 +72,13 @@ export default {
   name: 'Login',
   components: { LangSelect, SocialSign },
   data() {
-    const validateUsername = (rule, value, callback) => {
-      if (!isvalidUsername(value)) {
-        callback(new Error('Please enter the correct user name'))
-      } else {
-        callback()
-      }
-    }
+    // const validateUsername = (rule, value, callback) => {
+    //   if (!isvalidUsername(value)) {
+    //     callback(new Error('Please enter the correct user name'))
+    //   } else {
+    //     callback()
+    //   }
+    // }
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
         callback(new Error('The password can not be less than 6 digits'))
@@ -92,7 +92,7 @@ export default {
         password: '1111111'
       },
       loginRules: {
-        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
+        // username: [{ required: true, trigger: 'blur', validator: validateUsername }],
         password: [{ required: true, trigger: 'blur', validator: validatePassword }]
       },
       passwordType: 'password',
@@ -141,20 +141,21 @@ export default {
       })
     },
     handleZuche() {
-      this.$refs.loginForm.validate(valid => {
-        if (valid) {
-          this.loading = true
-          this.$store.dispatch('LoginSignup', this.loginForm).then(() => {
-            this.loading = false
-            this.$router.push({ path: '/signup' })
-          }).catch(() => {
-            this.loading = false
-          })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
+      this.$router.push({ path: '/signup' })
+
+      // this.$refs.loginForm.validate(valid => {
+      //   if (valid) {
+      //     this.loading = true
+      //     this.$store.dispatch('LoginSignup', this.loginForm).then(() => {
+      //       this.loading = false
+      //     }).catch(() => {
+      //       this.loading = false
+      //     })
+      //   } else {
+      //     console.log('error submit!!')
+      //     return false
+      //   }
+      // })
     },
     afterQRScan() {
       // const hash = window.location.hash.slice(1)

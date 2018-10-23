@@ -6,7 +6,7 @@ export function loginByUsername(username, password) {
     password
   }
   return request({
-    url: '/login/login',
+    url: 'http://localhost:3001/login',
     method: 'post',
     data
   })
@@ -20,8 +20,9 @@ export function logout() {
 }
 
 export function getUserInfo(token) {
+  console.log('有无' + token + '~~~~')
   return request({
-    url: '/user/info',
+    url: 'http://localhost:3001/info',
     method: 'get',
     params: { token }
   })
@@ -34,7 +35,7 @@ export function loginSignup(username, password) {
     password
   }
   return request({
-    url: 'http://localhost:3009/user/signup',
+    url: 'http://localhost:3001/signup',
     method: 'post',
     data
   })

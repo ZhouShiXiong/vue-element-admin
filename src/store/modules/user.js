@@ -50,10 +50,13 @@ const user = {
       return new Promise((resolve, reject) => {
         loginByUsername(username, userInfo.password).then(response => {
           const data = response.data
+          console.log('~~~~~111~~~~~~~~~~~~~~' + data.token)
           commit('SET_TOKEN', data.token)
           setToken(response.data.token)
+          console.log('难道走了这？')
           resolve()
         }).catch(error => {
+          console.log('走了这')
           reject(error)
         })
       })
@@ -61,9 +64,11 @@ const user = {
     LoginSignup({ commit }, userInfo) {
       console.log('注册')
       const username = userInfo.username.trim()
+      console.log(username)
       return new Promise((resolve, reject) => {
         loginSignup(username, userInfo.password).then(response => {
           const data = response.data
+
           commit('SET_TOKEN', data.token)
           setToken(response.data.token)
           resolve()
@@ -75,8 +80,11 @@ const user = {
 
     // 获取用户信息
     GetUserInfo({ commit, state }) {
+      console.log('^^^^^^^^^^^^^' + state.token)
       return new Promise((resolve, reject) => {
         getUserInfo(state.token).then(response => {
+          console.log('~~~~~~~~~~~~~~~~~~~~~~~')
+          console.log(response)
           if (!response.data) { // 由于mockjs 不支持自定义状态码只能这样hack
             reject('error')
           }
